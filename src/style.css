@@ -1,3 +1,11 @@
 h1 {
   color: blueviolet;
 }
+
+.body-wrapper {
+  max-width: 600px;
+  display: block;
+  text-align: center;
+  margin: 40px 60px;
+  border: 1px solid rgb(33, 37, 41);
+}
