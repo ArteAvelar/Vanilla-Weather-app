@@ -51,3 +51,7 @@ h1 {
 .temperature-number {
   padding-left: 10px;
 }
+
+ul {
+  list-style: none;
+}
