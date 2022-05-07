@@ -48,20 +48,20 @@
             </div>
           </form>
           <div class="today-parameters">
-            <h1>Munich</h1>
+            <h1 id="city">Munich</h1>
             <div>Friday 17:11</div>
             <div class="row">
               <div class="col-6">
                 <div class="temperature">
                   <i class="fa-solid fa-sun"></i
-                  ><span class="Temperature-number"> 20°</span>
+                  ><span class="Temperature-number" id="temperature"> 20</span>°
                 </div>
               </div>
               <div class="col-6">
                 <ul>
-                  <li>Light rain</li>
-                  <li>Humidity:</li>
-                  <li>Wind speed:</li>
+                  <li id="daily-condition">Light rain</li>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Wind speed: <span id="windSpeed"></span> km/h</li>
                 </ul>
               </div>
             </div>
