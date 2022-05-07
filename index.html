@@ -21,6 +21,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -46,22 +47,23 @@
               </div>
             </div>
           </form>
-
-          <h1>Munich</h1>
-          <div>Friday 17:11</div>
-          <div class="row">
-            <div class="col-6">
-              <div class="temperature">
-                <i class="fa-solid fa-sun"></i
-                ><span class="Temperature-number"> 20°</span>
+          <div class="today-parameters">
+            <h1>Munich</h1>
+            <div>Friday 17:11</div>
+            <div class="row">
+              <div class="col-6">
+                <div class="temperature">
+                  <i class="fa-solid fa-sun"></i
+                  ><span class="Temperature-number"> 20°</span>
+                </div>
               </div>
-            </div>
-            <div class="col-6">
-              <ul>
-                <li>Light rain</li>
-                <li>Humidity</li>
-                <li>Wind speed</li>
-              </ul>
+              <div class="col-6">
+                <ul>
+                  <li>Light rain</li>
+                  <li>Humidity:</li>
+                  <li>Wind speed:</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
