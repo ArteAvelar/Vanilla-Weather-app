@@ -1,5 +1,28 @@
+function actualDate(formatTime) {
+  let date = new Date(formatTime * 1000);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return day + " " + hours + ":" + minutes;
+}
+
 function getWeatherMunich(response) {
-  console.log(response.data);
+  console.log(response.data.dt);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city");
@@ -10,6 +33,8 @@ function getWeatherMunich(response) {
   humidity.innerHTML = response.data.main.humidity;
   let windSpeed = document.querySelector("#windSpeed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  let date = document.querySelector("#date");
+  date.innerHTML = actualDate(response.data.dt);
 }
 
 let apiKey = "99504b2dad7b6efc86f191546c548e5a";

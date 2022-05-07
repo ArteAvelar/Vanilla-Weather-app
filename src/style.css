@@ -61,6 +61,6 @@ ul {
   list-style: none;
 }
 
-li {
+li::first-letter {
   text-transform: capitalize;
 }
