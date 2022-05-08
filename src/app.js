@@ -22,7 +22,6 @@ function actualDate(formatTime) {
 }
 
 function getWeatherMunich(response) {
-  console.log(response.data.weather[0].description);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city");
@@ -45,13 +44,25 @@ function getWeatherMunich(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
-let city = "atlanta";
-let apiKey = "99504b2dad7b6efc86f191546c548e5a";
-let apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=" +
-  city +
-  "&appid=" +
-  apiKey +
-  "&units=metric";
+function search(city) {
+  let apiKey = "99504b2dad7b6efc86f191546c548e5a";
+  let apiUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&appid=" +
+    apiKey +
+    "&units=metric";
 
-axios.get(apiUrl).then(getWeatherMunich);
+  axios.get(apiUrl).then(getWeatherMunich);
+}
+
+function submitCity(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-search");
+  search(cityInput.value);
+}
+
+search("Munich");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submitCity);
