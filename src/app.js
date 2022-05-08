@@ -22,6 +22,7 @@ function actualDate(formatTime) {
 }
 
 function getWeatherMunich(response) {
+  console.log(response.data.weather[0].description);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city");
@@ -34,9 +35,17 @@ function getWeatherMunich(response) {
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = actualDate(response.data.dt);
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    "http://openweathermap.org/img/wn/" +
+      response.data.weather[0].icon +
+      "@2x.png"
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
-let city = "Munich";
+let city = "atlanta";
 let apiKey = "99504b2dad7b6efc86f191546c548e5a";
 let apiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=" +
