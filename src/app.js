@@ -1,5 +1,6 @@
 function actualDate(formatTime) {
   let date = new Date(formatTime * 1000);
+
   let hours = date.getHours();
   if (hours < 10) {
     hours = "0" + hours;
@@ -35,6 +36,7 @@ function getWeatherMunich(response) {
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = actualDate(response.data.dt);
+
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     "src",
