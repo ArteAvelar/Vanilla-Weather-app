@@ -49,16 +49,43 @@
             </div>
           </form>
           <div class="today-parameters">
-            <h1 id="city">Munich</h1>
+            <div class="row">
+              <div class="class-7">
+                <h1 id="city">Munich</h1>
+              </div>
+              <div class="class-5">
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic outlined example"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    id="celsius-button"
+                  >
+                    C
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    id="farenheit-button"
+                  >
+                    F
+                  </button>
+                </div>
+              </div>
+            </div>
             <div id="date">Friday 17:11</div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-7">
                 <div class="temperature">
                   <img src="" alt="rainy" id="icon" />
                   <span class="Temperature-number" id="temperature"> 20</span>°
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <ul>
                   <li id="daily-condition">Light rain</li>
                   <li>Humidity: <span id="humidity"></span>%</li>

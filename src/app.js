@@ -22,6 +22,7 @@ function actualDate(formatTime) {
 }
 
 function getWeatherMunich(response) {
+  celsiusdegrees = response.data.main.temp;
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city");
@@ -62,7 +63,29 @@ function submitCity(event) {
   search(cityInput.value);
 }
 
-search("Munich");
+function displayfarenheit(event) {
+  event.preventDefault();
+  let farenheitDegrees = (celsiusdegrees * 9) / 5 + 32;
+
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheitDegrees);
+}
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusdegrees);
+}
+
+let celsiusdegrees = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitCity);
+
+let farenheitTemp = document.querySelector("#farenheit-button");
+farenheitTemp.addEventListener("click", displayfarenheit);
+
+let celciusTemp = document.querySelector("#celsius-button");
+celciusTemp.addEventListener("click", displayCelsius);
+
+search("Munich");
