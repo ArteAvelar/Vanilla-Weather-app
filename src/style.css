@@ -11,10 +11,10 @@ h1 {
   max-width: 600px;
   display: block;
 
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(242, 235, 243) 0%,
-    rgb(234, 241, 249) 90.1%
+  background: linear-gradient(
+    180.3deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(110, 136, 161) 90.2%
   );
   margin: 20px auto;
   border: 1px solid #e7eaf6;
