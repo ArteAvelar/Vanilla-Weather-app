@@ -22,6 +22,33 @@ function actualDate(formatTime) {
   return day + " " + hours + ":" + minutes;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2">
+  <div class="forecast-weekday">${day}</div>
+  <img
+  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+  alt="icon-day"
+ />
+  <div class="weekday-temp">
+ <span class="max-temp">20</span>° /
+<span class="min-temp">10</span>°
+</div>
+ </div> 
+   `;
+  });
+
+  forecastHTML = forecastHTML + `<div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function getWeatherMunich(response) {
   celsiusdegrees = response.data.main.temp;
   let temperature = document.querySelector("#temperature");
@@ -91,3 +118,4 @@ let celciusTemp = document.querySelector("#celsius-button");
 celciusTemp.addEventListener("click", displayCelsius);
 
 search("Munich");
+displayForecast();
