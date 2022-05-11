@@ -67,3 +67,12 @@ ul {
 li::first-letter {
   text-transform: capitalize;
 }
+
+.forecast {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.weekday-temp {
+  font-size: 12px;
+}
