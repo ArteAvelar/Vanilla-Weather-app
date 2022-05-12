@@ -22,35 +22,41 @@ function actualDate(formatTime) {
   return day + " " + hours + ":" + minutes;
 }
 
-function displayForecast() {
+function formatForecast(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2">
-  <div class="forecast-weekday">${day}</div>
+  <div class="forecast-weekday">${formatForecast(forecastDay.dt)}</div>
   <img
-  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+  src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
   alt="icon-day"
  />
   <div class="weekday-temp">
- <span class="max-temp">20</span>° /
-<span class="min-temp">10</span>°
+ <span class="max-temp">${Math.round(forecastDay.temp.max)}</span>° /
+<span class="min-temp">${Math.round(forecastDay.temp.min)}</span>°
 </div>
  </div> 
    `;
+    }
   });
 
   forecastHTML = forecastHTML + `<div>`;
   forecastElement.innerHTML = forecastHTML;
-}
-
-function getForecast(response) {
-  console.log(response.data.daily);
 }
 
 function getWeatherMunich(response) {
@@ -79,7 +85,7 @@ function getWeatherMunich(response) {
 
   let apiKey = "99504b2dad7b6efc86f191546c548e5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(getForecast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function search(city) {
@@ -126,4 +132,3 @@ let celciusTemp = document.querySelector("#celsius-button");
 celciusTemp.addEventListener("click", displayCelsius);
 
 search("Munich");
-displayForecast();
