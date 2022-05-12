@@ -47,11 +47,17 @@ function displayForecast(response) {
   alt="icon-day"
  />
   <div class="weekday-temp">
- <span class="max-temp">${Math.round(forecastDay.temp.max)}</span>° /
-<span class="min-temp">${Math.round(forecastDay.temp.min)}</span>°
+ <span class="max-temp" id="max-temp-day${index}">${Math.round(
+          forecastDay.temp.max
+        )}</span>° /
+<span class="min-temp"id="min-temp-day${index}">${Math.round(
+          forecastDay.temp.min
+        )}</span>°
 </div>
  </div> 
    `;
+      minTemperatureDay.push(forecastDay.temp.min);
+      maxTemperatureDay.push(forecastDay.temp.max);
     }
   });
 
@@ -112,15 +118,60 @@ function displayfarenheit(event) {
 
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(farenheitDegrees);
+
+  minTemperatureDay.forEach(function (forecastDayFarenheit, index) {
+    let forecastFarenheitDegrees =
+      Math.round(minTemperatureDay[index] * 9) / 5 + 32;
+
+    let temperatureFarenheitElement = document.querySelector(
+      `#min-temp-day${index}`
+    );
+    temperatureFarenheitElement.innerHTML = Math.round(
+      forecastFarenheitDegrees
+    );
+  });
+
+  maxTemperatureDay.forEach(function (forecastDayFarenheit, index) {
+    let forecastFarenheitDegrees =
+      Math.round(maxTemperatureDay[index] * 9) / 5 + 32;
+
+    let temperatureFarenheitElement = document.querySelector(
+      `#max-temp-day${index}`
+    );
+    temperatureFarenheitElement.innerHTML = Math.round(
+      forecastFarenheitDegrees
+    );
+  });
 }
 
 function displayCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusdegrees);
+
+  minTemperatureDay.forEach(function (forecastDayCelsius, index) {
+    let forecastCelsiusDegrees = minTemperatureDay[index];
+
+    let temperatureCelciusElement = document.querySelector(
+      `#min-temp-day${index}`
+    );
+    temperatureCelciusElement.innerHTML = Math.round(forecastCelsiusDegrees);
+  });
+
+  maxTemperatureDay.forEach(function (forecastDayCelsius, index) {
+    let forecastCelsiusDegrees = maxTemperatureDay[index];
+
+    let temperatureCelciusElement = document.querySelector(
+      `#max-temp-day${index}`
+    );
+    temperatureCelciusElement.innerHTML = Math.round(forecastCelsiusDegrees);
+  });
 }
 
 let celsiusdegrees = null;
+
+let minTemperatureDay = [];
+let maxTemperatureDay = [];
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitCity);
