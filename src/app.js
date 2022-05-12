@@ -49,6 +49,10 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(response) {
+  console.log(response.data.daily);
+}
+
 function getWeatherMunich(response) {
   celsiusdegrees = response.data.main.temp;
   let temperature = document.querySelector("#temperature");
@@ -72,6 +76,10 @@ function getWeatherMunich(response) {
       "@2x.png"
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  let apiKey = "99504b2dad7b6efc86f191546c548e5a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getForecast);
 }
 
 function search(city) {
