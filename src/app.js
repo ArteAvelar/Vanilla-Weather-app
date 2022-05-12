@@ -31,6 +31,8 @@ function formatForecast(timeStamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  minTemperatureDay = [];
+  maxTemperatureDay = [];
 
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
