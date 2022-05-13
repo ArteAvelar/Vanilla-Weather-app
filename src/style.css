@@ -47,11 +47,24 @@ img {
   cursor: pointer;
   transition: all 150ms ease-in-out;
   background-color: rgb(108, 74, 196);
+  border-color: rgb(108, 74, 196);
+}
+
+.button {
+  border-color: rgb(108, 74, 196);
+  color: rgb(108, 74, 196);
+}
+.button:hover {
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  background-color: rgb(108, 74, 196);
+  border-color: rgb(108, 74, 196);
 }
 
 .search-button {
   background-color: rgb(136, 93, 241);
   max-width: 100px;
+  border-color: rgb(108, 74, 196);
 }
 
 .temperature {
