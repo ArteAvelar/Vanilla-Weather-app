@@ -3,6 +3,7 @@ body {
   margin: 0 auto;
   font-family: "Secular One", sans-serif;
   max-width: 600px;
+  background-color: #f9f7fe;
 }
 h1 {
   color: rgb(39, 33, 66);
